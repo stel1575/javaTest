@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", id);
 			session.setAttribute("grade", loginMember.getGrade());
 			session.setAttribute("member", loginMember);
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("template.jsp");
 		}
 		else{
 			response.setContentType("text/html;charset=UTF-8");
