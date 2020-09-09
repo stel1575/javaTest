@@ -32,7 +32,7 @@ public class LoginDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = con.prepareStatement("SELECT * FROM users WHERE id = ? AND passwd = ?");
+			pstmt = con.prepareStatement("SELECT * FROM kscomuser WHERE id = ? AND passwd = ?");
 			pstmt.setString(1, id);
 			pstmt.setString(2, passwd);
 			rs = pstmt.executeQuery();
