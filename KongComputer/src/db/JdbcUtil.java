@@ -7,6 +7,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+//�����ͺ��̽� �۾��� �� �� �ݺ������� �����ؾ� �ϴ� �۾��� �����ϴ� Ŭ����
 public class JdbcUtil {
 	
 	public static Connection getConnection(){
