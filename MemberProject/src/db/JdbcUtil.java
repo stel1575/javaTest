@@ -7,6 +7,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+//데이터베이스 작업을 할 때 반복적으로 수행해야 하는 작업을 정의하는 클래스
 public class JdbcUtil {
 	
 	public static Connection getConnection(){
@@ -70,3 +71,14 @@ public class JdbcUtil {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -7,8 +7,9 @@ import static db.JdbcUtil.*;
 import vo.MemberBean;
 
 public class MemberListService {
-	
+
 	public ArrayList<MemberBean> getMemberList() {
+		// TODO Auto-generated method stub
 		Connection con = getConnection();
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		memberDAO.setConnection(con);

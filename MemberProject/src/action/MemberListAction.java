@@ -23,7 +23,7 @@ public class MemberListAction implements Action{
 	   			response.setContentType("text/html;charset=UTF-8");
 		   		PrintWriter out=response.getWriter();
 		   		out.println("<script>");
-		   		out.println("alert('°ü¸®ÀÚ°¡ ¾Æ´Õ´Ï´Ù.');");
+		   		out.println("alert('ê´€ë¦¬ìê°€ ì•„ë‹™ë‹ˆë‹¤.');");
 		   		out.println("location.href='./memberLogin.me");
 		   		out.println("</script>");
 	   		}

@@ -10,7 +10,6 @@ public class LoginDAO {
 	
 	private static LoginDAO loginDAO;
 	private Connection con;
-	
 	private LoginDAO() {
 		// TODO Auto-generated constructor stub
 	}

@@ -41,7 +41,7 @@ public class MemberDAO {
 				loginId = rs.getString("MEMBER_ID");
 			}
 		}catch(Exception ex){
-			System.out.println(" ¿¡·¯: " + ex);			
+			System.out.println(" ì—ëŸ¬: " + ex);			
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -66,7 +66,7 @@ public class MemberDAO {
 			insertCount=pstmt.executeUpdate();
 			
 		}catch(Exception ex){
-			System.out.println("joinMember ¿¡·¯: " + ex);			
+			System.out.println("joinMember ï¿½ï¿½ï¿½ï¿½: " + ex);			
 		}finally{
 			close(pstmt);
 		}
@@ -96,7 +96,7 @@ public class MemberDAO {
 				}while(rs.next());
 			}
 		}catch(Exception ex){
-			System.out.println("getDeatilMember ¿¡·¯: " + ex);			
+			System.out.println("getDeatilMember ì—ëŸ¬: " + ex);			
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -123,7 +123,7 @@ public class MemberDAO {
 			mb.setMEMBER_EMAIL(rs.getString("MEMBER_EMAIL"));
 			}
 		}catch(Exception ex){
-			System.out.println("getDeatilMember ¿¡·¯: " + ex);			
+			System.out.println("getDeatilMember ì—ëŸ¬: " + ex);			
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -140,7 +140,7 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			deleteCount = pstmt.executeUpdate();
 		}catch(Exception ex){
-			System.out.println("deleteMember ¿¡·¯: " + ex);	
+			System.out.println("deleteMember ì—ëŸ¬: " + ex);	
 		}finally{
 			close(pstmt);
 		}

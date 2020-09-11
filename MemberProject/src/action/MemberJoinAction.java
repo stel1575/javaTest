@@ -29,7 +29,7 @@ public class MemberJoinAction implements Action{
 	   			response.setContentType("text/html;charset=UTF-8");
 	   			PrintWriter out = response.getWriter();
 	   			out.println("<script>");
-	   			out.println("alert('íšŒì›ë“±ë¡ì‹¤íŒ¨')");
+	   			out.println("alert('È¸¿øµî·Ï½ÇÆĞ')");
 	   			out.println("history.back()");
 	   			out.println("</script>");
 		   	}
