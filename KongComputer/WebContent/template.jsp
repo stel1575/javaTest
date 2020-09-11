@@ -34,7 +34,7 @@
 		    }
 		%>
 		</li>
-		<li><a href="#">회원가입</a></li>
+		<li><a href="JoinForm.jsp">회원가입</a></li>
 		<li><a href="#">장바구니</a></li>
 		<li><a href="#">제품보러가기</a></li>
 	</ul>
