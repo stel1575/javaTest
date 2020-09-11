@@ -1,31 +1,16 @@
 package vo;
 
 public class Member {
-	private String name;
-	private String addr;
-	private int age;
 	private String id;
 	private String passwd;
+	private String name;
+	private int age;
 	private String gender;
+	private String addr;
 	private String email;
 	private String grade;
-
 	
-	private String getName() {
-		return name;
-	}
-	public String getAddr() {
-		return addr;
-	}
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
+	
 	public String getId() {
 		return id;
 	}
@@ -38,11 +23,29 @@ public class Member {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 	public String getEmail() {
 		return email;
@@ -50,15 +53,13 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getGrade() {
 		return grade;
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	
 
+
+	
 }

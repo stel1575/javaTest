@@ -38,13 +38,13 @@ public class LoginDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				loginMember = new Member();
-				loginMember.setAddr(rs.getString("addr"));
-				loginMember.setAge(rs.getInt("age"));
-				loginMember.setEmail(rs.getString("email"));
-				loginMember.setGender(rs.getString("gender"));
 				loginMember.setId(rs.getString("id"));
-				loginMember.setName(rs.getString("name"));
 				loginMember.setPasswd(rs.getString("passwd"));
+				loginMember.setName(rs.getString("name"));
+				loginMember.setAge(rs.getInt("age"));
+				loginMember.setGender(rs.getString("gender"));
+				loginMember.setAddr(rs.getString("addr"));
+				loginMember.setEmail(rs.getString("email"));
 				loginMember.setGrade(rs.getString("grade"));
 			}
 		} catch (Exception e) {
