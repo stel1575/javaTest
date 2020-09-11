@@ -1,0 +1,11 @@
+<Context> 
+  <Resource name="jdbc/MySQL"
+   auth="Container"
+   type="javax.sql.DataSource" 
+   driverClassName="com.mysql.jdbc.Driver"
+   url="jdbc:mysql://localhost:3306/KScom" 
+   username="java"
+   password="java"
+   maxActive="500" 
+   maxIdle="100"/>  
+</Context>
