@@ -1,64 +1,150 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.sql.DataSource;
+import vo.MemberBean;
+import static db.JdbcUtil.*;
 
 public class MemberDAO {
-    private Connection getConnection() throws SQLException {
-        Connection conn = null;
+	public static MemberDAO instance;
+	Connection con;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	DataSource ds;
+	private MemberDAO() {
+		
+	}
+	public static MemberDAO getInstance(){
+		if(instance == null){
+			instance = new MemberDAO();
+		}
+		return instance;
+	}
+	public void setConnection(Connection con){
+		this.con = con;
+	}
+	
+	public String selectLoginId(MemberBean member){
+		String loginId = null;
+		String sql="select MEMBER_ID FROM KScomUser where MEMBER_ID=? AND MEMBER_PW=?";
 
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
+		try{
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, member.getMEMBER_ID());
+			pstmt.setString(2, member.getMEMBER_PW());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				loginId = rs.getString("MEMBER_ID");
+			}
+		}catch(Exception ex){
+			System.out.println(" 에러: " + ex);			
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+		
+		return loginId;
+	}
+	
+	public int insertMember(MemberBean member){
+		String sql="insert into KScomUser VALUES (?,?,?,?,?,?)";
+		int insertCount=0;
+		
+		try{
 
-            String url = "jdbc:mysql://localhost:3306/KScom";
-            conn = DriverManager.getConnection(url, "java", "java");
-        }
-        catch (ClassNotFoundException e) {
-            System.out.println(" 드라이버 로딩 실패 ");
-        }
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, member.getMEMBER_ID());
+			pstmt.setString(2, member.getMEMBER_PW());
+			pstmt.setString(3, member.getMEMBER_NAME());
+			pstmt.setInt(4, member.getMEMBER_AGE());
+			pstmt.setString(5, member.getMEMBER_GENDER());
+			pstmt.setString(6, member.getMEMBER_EMAIL());
+			insertCount=pstmt.executeUpdate();
 
-        return conn;
-    }
+		}catch(Exception ex){
+			System.out.println("joinMember 에러: " + ex);			
+		}finally{
+			close(pstmt);
+		}
+		
+		return insertCount;
+	}
+	
+	public ArrayList<MemberBean> selectMemberList(){
+		String sql="SELECT * FROM KScomUser";
+		ArrayList<MemberBean> memberList=new ArrayList<MemberBean>();
+		MemberBean mb = null;
+		try{
+			
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				do{
+				mb=new MemberBean();
+				mb.setMEMBER_ID(rs.getString("MEMBER_ID"));
+				mb.setMEMBER_PW(rs.getString("MEMBER_PW"));
+				mb.setMEMBER_NAME(rs.getString("MEMBER_NAME"));
+				mb.setMEMBER_AGE(rs.getInt("MEMBER_AGE"));
+				mb.setMEMBER_GENDER(rs.getString("MEMBER_GENDER"));
+				mb.setMEMBER_EMAIL(rs.getString("MEMBER_EMAIL"));
+				memberList.add(mb);
+				}while(rs.next());
+			}
+		}catch(Exception ex){
+			System.out.println("getDeatilMember 에러: " + ex);			
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+		return memberList;
+	}
+	
+	public MemberBean selectMember(String id){
+		String sql="SELECT * FROM KScomUser WHERE MEMBER_ID=?";
+		MemberBean mb = null;
+		try{
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+			mb=new MemberBean();
+			mb.setMEMBER_ID(rs.getString("MEMBER_ID"));
+			mb.setMEMBER_PW(rs.getString("MEMBER_PW"));
+			mb.setMEMBER_NAME(rs.getString("MEMBER_NAME"));
+			mb.setMEMBER_AGE(rs.getInt("MEMBER_AGE"));
+			mb.setMEMBER_GENDER(rs.getString("MEMBER_GENDER"));
+			mb.setMEMBER_EMAIL(rs.getString("MEMBER_EMAIL"));
+			}
+		}catch(Exception ex){
+			System.out.println("getDeatilMember 에러: " + ex);			
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+		
+		return mb;
+	}
+	public int deleteMember(String id){
+		String sql="DELETE from KScomUser WHERE MEMBER_ID=?";
+		int deleteCount = 0;
 
-    public boolean insert(vo.Member member ) {
-        boolean result = false;
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-
-        try {
-            conn = getConnection();
-
-            // Column
-            // PK , name , email , password
-            String sql = "INSERT INTO user VALUES (null, ?, ?, ?);";
-            pstmt = conn.prepareStatement(sql);
-
-            pstmt.setString(1, member.getName());
-            pstmt.setString(2, member.getEmail());
-            pstmt.setString(3, member.getPasswd());
-            int count = pstmt.executeUpdate();
-
-            result = (count == 1);
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if( conn != null ) {
-                    conn.close();
-                }
-                if( pstmt != null ) {
-                    pstmt.close();
-                }
-            }
-            catch(SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return result;
-    }
+		try{
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			deleteCount = pstmt.executeUpdate();
+		}catch(Exception ex){
+			System.out.println("deleteMember 에러: " + ex);	
+		}finally{
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
 }
