@@ -4,11 +4,11 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import svc.MemberJoinService;
-import vo.ActionForward;
+import vo.ActionForward_member;
 import vo.MemberBean;
 
 public class MemberJoinAction implements Action{
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) 
+	 public ActionForward_member execute(HttpServletRequest request,HttpServletResponse response) 
 	 	throws Exception{
 		 	
 		 	MemberBean member=new MemberBean();
@@ -24,17 +24,17 @@ public class MemberJoinAction implements Action{
 	   		MemberJoinService memberJoinService = new MemberJoinService();
 	   		joinResult=memberJoinService.joinMember(member);
 	   		
-	   		ActionForward forward = null;
+	   		ActionForward_member forward = null;
 	   		if(joinResult==false){
 	   			response.setContentType("text/html;charset=UTF-8");
 	   			PrintWriter out = response.getWriter();
 	   			out.println("<script>");
-	   			out.println("alert('È¸¿øµî·Ï½ÇÆÐ')");
+	   			out.println("alert('È¸ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½')");
 	   			out.println("history.back()");
 	   			out.println("</script>");
 		   	}
 	   		else{
-	   	    forward = new ActionForward();
+	   	    forward = new ActionForward_member();
 	   		forward.setRedirect(true);
 	   		forward.setPath("./memberLogin.me");
 	   		}

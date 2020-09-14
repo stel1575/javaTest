@@ -5,17 +5,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import svc.MemberDeleteService;
-import vo.ActionForward;
+import vo.ActionForward_member;
 
 public class MemberDeleteAction implements Action{
-	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) 
+	public ActionForward_member execute(HttpServletRequest request,HttpServletResponse response) 
 			throws Exception{
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
 
-		ActionForward forward = null;
+		ActionForward_member forward = null;
 		if(id==null){
-			forward = new ActionForward();
+			forward = new ActionForward_member();
 			forward.setRedirect(true);
 			forward.setPath("./memberLogin.me");
 		}else if(!id.equals("admin")){
@@ -32,7 +32,7 @@ public class MemberDeleteAction implements Action{
 			boolean deleteResult=memberDeleteService.deleteMember(deleteId);
 
 			if(deleteResult){
-				forward = new ActionForward();
+				forward = new ActionForward_member();
 				forward.setRedirect(true);
 				forward.setPath("./memberListAction.me");
 			}

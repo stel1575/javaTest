@@ -1,6 +1,6 @@
 package vo;
 
-public class ActionForward {
+public class ActionForward_member {
 	private boolean isRedirect=false;
 	private String path=null;
 	

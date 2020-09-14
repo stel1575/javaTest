@@ -11,7 +11,7 @@ import action.MemberJoinAction;
 import action.MemberListAction;
 import action.MemberLoginAction;
 import action.MemberViewAction;
-import vo.ActionForward;
+import vo.ActionForward_member;
 
 @WebServlet("*.me")
 public class MemberFrontController extends javax.servlet.http.HttpServlet 
@@ -22,15 +22,15 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet
 		String RequestURI=request.getRequestURI();
 		String contextPath=request.getContextPath();
 		String command=RequestURI.substring(contextPath.length());
-		ActionForward forward=null;
+		ActionForward_member forward=null;
 		Action action=null;
 
 		if(command.equals("/memberLogin.me")){
-			forward=new ActionForward();
+			forward=new ActionForward_member();
 			forward.setRedirect(true);
 			forward.setPath("./loginForm.jsp");
 		}else if(command.equals("/memberJoin.me")){
-			forward=new ActionForward();
+			forward=new ActionForward_member();
 			forward.setRedirect(false);
 			forward.setPath("./joinForm.jsp");
 		}else if(command.equals("/memberLoginAction.me")){
