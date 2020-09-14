@@ -1,0 +1,55 @@
+body{
+	font-family: "맑은 고딕","고딕","굴림";
+	
+}
+header{
+	width:80%;
+	background: navy;
+	margin-right:auto;
+	margin-left:auto;
+	padding:10px;
+	overflow:hidden;
+	}
+header ul{
+	list-style-type:none;
+	
+}
+header ul li{
+	
+	float: right;
+	margin-right:15px;
+	font-size:0.9em;
+	
+}
+header ul li a{
+	color:white;
+	text-decoration: none;
+	
+}
+header ul li a:hover{
+	color: red;
+	
+}
+
+ nav{
+	width:80%;
+	margin-right:auto;
+	margin-left:80px;
+	
+}
+ nav ul{
+	list-style-type:none;
+	
+}
+ nav li{
+	float: right;
+	margin-right:15px;
+	
+}
+nav ul li a{
+	font-size:1.1em;
+	color:black;
+	text-decoration:none;
+	border-right:1px solid black;
+	
+}
