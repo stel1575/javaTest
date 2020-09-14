@@ -11,6 +11,13 @@
 	url="jdbc:mysql://localhost:3306/KScom"
 	maxActive="500" 
 	maxIdle="100"/>
+	
+	
+	<!-- Session settitng -->
+	<session-config>
+    <session-timeout>15</session-timeout>                                                
+	</session-config>
+
 
 	<!-- Oracle -->
 	<Resource name="jdbc/jsptest"
